@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ltodeploy
+  name: finaldeploy
 spec:
   replicas: 2
   strategy:
@@ -10,17 +10,17 @@ spec:
       maxUnavailable: 1
   selector:
     matchLabels:
-      app: ltopod
+      app: finalpod
   template:
     metadata:
       labels:
-        app: ltopod
+        app: finalpod
     spec:
       containers:
-      - name: lto-container
-        image: abhishek00007/lto:v.2
+      - name: finalcontainer
+        image: abhishek00007/finalproject:v.2
         ports:
-        - containerPort: 3000
+        - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -30,7 +30,7 @@ spec:
   selector:
     app: ltopod
   ports:
-  - port: 3000
-    targetPort: 3000
-    nodePort: 31001
+  - port: 80
+    targetPort: 80
+    nodePort: 31005
   type: NodePort  

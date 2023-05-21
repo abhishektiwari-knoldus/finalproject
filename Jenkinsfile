@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('docker build.') {
             steps {
-                sh 'docker build . -t abhishek00007/lto:v.${BUILD_NUMBER}'
+                sh 'docker build . -t abhishek00007/finalproject:v.${BUILD_NUMBER}'
                
             }
             
@@ -21,25 +21,21 @@ pipeline {
     }
         stage('docker image pushh')
         {
-             when {
-                branch "master"
-                  }
+             
             steps
             {
-                 sh 'docker push abhishek00007/lto:v.${BUILD_NUMBER}'
+                 sh 'docker push abhishek00007/finalproject:v.${BUILD_NUMBER}'
             }
         }
         stage('deploy k8ss')
         {
-             when {
-                branch "master"
-            }
+            
             steps
             {
               withKubeConfig([credentialsId: '0fe6a189-a124-43d0-8fcf-d3f27ac0fa63']) {
 
-              sh 'kubectl apply -f deploy.yml'  
-              sh 'kubectl set image deployment/ltodeploy lto-container=abhishek00007/lto:v.${BUILD_NUMBER}'
+              sh 'kubectl apply -f deployment.yml'  
+              sh 'kubectl set image deployment/finaldeploy finalcontainer=abhishek00007/finalproject:v.${BUILD_NUMBER}'
               
               
 }
