@@ -1,3 +1,3 @@
-FROM tomsik68/xampp:8
+FROM abhishek00007/finalproject:php
 WORKDIR /opt/lampp/htdocs
 COPY . .
