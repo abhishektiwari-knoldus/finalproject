@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ltodeploy
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: ltopod
+  template:
+    metadata:
+      labels:
+        app: ltopod
+    spec:
+      containers:
+      - name: lto-container
+        image: abhishek00007/lto:v.2
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lto-service
+spec:
+  selector:
+    app: ltopod
+  ports:
+  - port: 3000
+    targetPort: 3000
+    nodePort: 31001
+  type: NodePort  
