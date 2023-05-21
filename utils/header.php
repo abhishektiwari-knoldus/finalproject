@@ -34,7 +34,7 @@
     <div class = "col-md-12">
         <div class = "container">
             <div class = "jumbotron"><!--jumbotron-->
-                <h1><strong>Explore<br></strong> Your Favorite Event</h1><!--jumbotron heading-->
+                <h1><strong>Explore.<br></strong> Your Favorite Event</h1><!--jumbotron heading-->
                 <br>
                 <br><div class="browse d-md-flex col-md-14" >
                 <div class="row">
