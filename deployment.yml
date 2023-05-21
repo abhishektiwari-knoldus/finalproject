@@ -19,6 +19,10 @@ spec:
       containers:
       - name: finalcontainer
         image: abhishek00007/finalproject:v.2
+        resources:
+          limits:
+            memory: "2048Mi"
+            cpu: "2000m"
         ports:
         - containerPort: 80
 ---
@@ -34,3 +38,4 @@ spec:
     targetPort: 80
     nodePort: 31005
   type: NodePort  
+
